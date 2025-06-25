@@ -1,0 +1,42 @@
+name: Generate Snake
+
+on:
+  # 定时执行 - 每天UTC时间0点执行
+  schedule:
+    - cron: "0 0 * * *"
+  
+  # 支持手动触发
+  workflow_dispatch:
+
+  # 推送到main分支时也触发
+  push:
+    branches: [ main ]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Generate Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: tsingfenge
+          outputs: |
+            static/svg/snake-Light.svg
+            static/svg/snake-Dark.svg?palette=github-dark
+            
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add static/svg/snake-*.svg
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🐍 Update snake animations [skip ci]"
+            git push
+          fi 
