@@ -1,9 +1,10 @@
 services:
-  caddy:
-    build: .
-    ports:
-      - "80:80"
-      - "443:443"
+  homepage:
+    image: nginx:alpine
+    container_name: homepage
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile    # 映射Caddyfile配置
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./static:/usr/share/nginx/html/static
+    ports:
+      - 2180:80
     restart: always
