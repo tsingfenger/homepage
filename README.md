@@ -41,7 +41,7 @@
 - 支持**背景整体模糊**和**卡片模糊**，可通过 CSS 切换。  
 - 使用**原生 HTML、CSS、JS**，未使用框架或插件。  
 
-**GitHub**：[https://github.com/tsingfenge/homepage](https://github.com/tsingfenge/homepage)  
+**GitHub**：[https://github.com/tsingfenger/homepage](https://github.com/tsingfenger/homepage)  
 **QQ群下载**：560938976  
 
 **后续计划**：  
@@ -130,6 +130,6 @@
 
 - ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=tsingfenge/homepage&type=Date)](https://star-history.com/#tsingfenge/homepage&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=tsingfenger/homepage&type=Date)](https://star-history.com/#tsingfenger/homepage&Date)
 
 
