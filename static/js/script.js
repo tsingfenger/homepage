@@ -7,6 +7,29 @@ console.log(' %c  > ^ <', 'color: #8B4513; font-size: 20px;');
 console.log('  %c /  ~ \\', 'color: #8B4513; font-size: 20px;');
 console.log('  %c/______\\', 'color: #8B4513; font-size: 20px;');
 
+// 项目图标配置 - 方便后续修改
+const projectIcons = {
+    '功能一': '🔧',
+    '功能二': '🎨', 
+    '功能三': '📋',
+    '功能四': '⭐',
+    '项目一': '💡',
+    '项目二': '🚀',
+    '项目三': '📊',
+    '项目四': '⚙️'
+};
+
+// 可选：动态应用图标（如果想要 JS 控制）
+function updateProjectIcons() {
+    document.querySelectorAll('.projectItem').forEach(item => {
+        const title = item.querySelector('h1')?.textContent;
+        const emojiSpan = item.querySelector('.project-emoji');
+        if (title && emojiSpan && projectIcons[title]) {
+            emojiSpan.textContent = projectIcons[title];
+        }
+    });
+}
+
 document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
 });
@@ -165,49 +188,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
    
 
-    var fpsElement = document.createElement('div');
-    fpsElement.id = 'fps';
-    fpsElement.style.zIndex = '10000';
-    fpsElement.style.position = 'fixed';
-    fpsElement.style.left = '0';
-    document.body.insertBefore(fpsElement, document.body.firstChild);
-
-    var showFPS = (function () {
-        var requestAnimationFrame = window.requestAnimationFrame ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame ||
-            window.oRequestAnimationFrame ||
-            window.msRequestAnimationFrame ||
-            function (callback) {
-                window.setTimeout(callback, 1000 / 60);
-            };
-
-        var fps = 0,
-            last = Date.now(),
-            offset, step, appendFps;
-
-        step = function () {
-            offset = Date.now() - last;
-            fps += 1;
-
-            if (offset >= 1000) {
-                last += offset;
-                appendFps(fps);
-                fps = 0;
+    /* --- 页面滚动渐显动画 --- */
+    var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
+        });
+    },{threshold:0.15});
+    document.querySelectorAll('.title, .projectItem').forEach(function(el){
+        el.classList.add('to-observe');
+        observer.observe(el);
+    });
 
-            requestAnimationFrame(step);
-        };
+    /* --- 回到顶部按钮 --- */
+    var backToTop = document.getElementById('backToTop');
+    if(backToTop){
+        window.addEventListener('scroll', function(){
+            if(window.scrollY > 400){
+                backToTop.style.display = 'block';
+            }else{
+                backToTop.style.display = 'none';
+            }
+        });
+        backToTop.addEventListener('click', function(){
+            window.scrollTo({top:0, behavior:'smooth'});
+        });
+    }
 
-        appendFps = function (fpsValue) {
-            fpsElement.textContent = 'FPS: ' + fpsValue;
-        };
-
-        step();
-    })();
-    
-    
-    
     //pop('./static/img/tz.jpg')
     
     
