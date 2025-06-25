@@ -1,135 +1,116 @@
-# ZYYO主页PHP后台版本
- 
-- 支持对图标、项目、分类、主题样式、标签、描述、左侧信息进行增删改查。  
-- 方便编辑名称、图标、点击.js事件等。  
-- 可控制贪吃蛇、侧边栏、技能的开关。  
-- 支持后台**多主题切换**，细致修改所有主题细节。  
+# 个人主页
 
->一个增值版本，如果你觉得自己不需要完全可以使用免费开源的html版本
->如果需要，请小小赞助一下作者
->售价：20元 
+一个简洁美观的个人主页模板，支持亮/暗主题切换。
 
+## ✨ 特色功能
 
->**演示站**：[https://zyyo.cc](https://zyyo.cc)  
->**后台**：[https://zyyo.cc/admin](https://zyyo.cc/admin)  
->**账号**：admin  
->**密码**：123456  
+- **亮色/暗色模式切换**
+- **多套主题样式**
+- **响应式设计**，支持桌面端和移动端
+- **背景模糊效果**，可通过 CSS 配置
+- 使用**原生 HTML、CSS、JS**，无框架依赖
+- **动画效果**，流畅的交互体验
 
-## 联系作者
-> QQ：3509679579  
-> QQ交流群：560938976  
+## 🛠️ 技术栈
 
-![主页截图](https://zyyo.net/usr/picture/homepage.png)  
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- SVG 图标
 
----
+## 📁 项目结构
 
-## 📚缘由 
+```
+homepage/
+├── index.html          # 主页面
+├── static/
+│   ├── css/
+│   │   ├── root.css    # 主题配置
+│   │   └── style.css   # 样式文件
+│   ├── js/
+│   │   └── script.js   # 功能脚本
+│   ├── img/            # 图片资源
+│   ├── fonts/          # 字体文件
+│   └── svg/            # SVG 图标
+└── docker-compose.yaml # Docker 部署配置
+```
 
-受到 **xhofe** 和 **ddiu** 个人主页的灵感启发，感谢两位大佬！  
+## 🚀 快速开始
 
-- 初版花费了几个小时，页面虽然简单，但后续花了大量时间进行优化。  
-- 我有强迫症，特别注重细节，每个小细节都耗费了很多心力。  
+1. **直接访问**
+   ```bash
+   # 克隆项目
+   git clone https://github.com/your-username/homepage.git
+   cd homepage
+   
+   # 用浏览器打开 index.html
+   open index.html
+   ```
 
-> 喜欢可以赞助，不喜欢可以直接离开。
+2. **Docker 部署**
+   ```bash
+   # 使用 Docker Compose
+   docker compose up -d
+   ```
 
----
+## ⚙️ 配置说明
 
-## ✨特色 
+### 主题配置
+编辑 `static/css/root.css` 文件来自定义主题样式：
+- 修改颜色变量
+- 调整背景样式
+- 配置模糊效果
 
-- **白天/黑夜模式**  
-- **5套白天主题**  
-- 支持**背景整体模糊**和**卡片模糊**，可通过 CSS 切换。  
-- 使用**原生 HTML、CSS、JS**，未使用框架或插件。  
+### 个人信息
+编辑 `index.html` 文件来修改：
+- 个人介绍
+- 项目展示
+- 联系方式链接
 
-**GitHub**：[https://github.com/tsingfenger/homepage](https://github.com/tsingfenger/homepage)  
-**QQ群下载**：560938976  
+### 项目图标
+现在使用 Emoji 图标，可在 HTML 中直接修改：
+```html
+<span class="project-emoji">🔧</span>
+```
 
-**后续计划**：  
-- 增加主页时钟  
-- 增加主页音乐播放器  
-- 完善 PHP 管理后台  
+## 📱 响应式支持
 
----
+- **桌面端**：4列网格布局
+- **平板端**：2列布局
+- **移动端**：单列布局，侧边栏可收起
 
-## 🛠️更新日志
+## 🎨 自定义
 
-1.6更新(2024.09.05)
-- 增加 `docker-compose` 一键部署。  
-- 自行安装 `docker` 和 `docker-compose`。  
-- 修改 `Caddyfile` 配置中的域名，然后运行：  
-  ```bash
-  docker compose up -d
-  ```
-- 自动配置 SSL 证书，并开启 HTTPS。
+### 添加新项目
+复制现有项目块，修改标题、描述和图标：
+```html
+<a class="projectItem" href="your-link">
+    <div class="projectItemLeft">
+        <h1>项目名称</h1>
+        <p>项目描述</p>
+    </div>
+    <div class="projectItemRight">
+        <span class="project-emoji">🚀</span>
+    </div>
+</a>
+```
 
-> 贡献者：[starry](https://github.com/sky22333)
+### 修改配色
+在 `static/css/root.css` 中调整 CSS 变量：
+```css
+html {
+    --main_text_color: #your-color;
+    --item_bg_color: #your-bg-color;
+    /* 更多变量... */
+}
+```
 
-1.5 更新 (2024.05.14)
+## 📄 许可证
 
-- 修复 iOS 浏览器背景模糊问题。
-- 修复黑夜模式切换时的卡顿。
-- 优化不同屏幕下的字体显示。
-- 优化大量细节。
+本项目基于原作者的开源版本进行修改，遵循相应的开源协议。
 
-1.4 更新
+## 🙏 致谢
 
-- 所有图片替换为字体图标。
-- 去除鼠标样式。
-- 修改所有路径为相对路径。
-- 细节优化，修复其他问题。
-
-1.3 更新
-
-- 优化加载动画。
-- 增加点击气泡动画。
-- 增加 5 套亮色主题，使用 CSS 变量控制，完全去除 JS 依赖。
-- 取消前台多主题切换，仅保留暗夜模式切换。
-- 支持背景整体模糊和卡片模糊。
-- 优化动效，去除无用效果。
-- 桌面端：一行显示 4 个项目。
-- 移动端：支持一行两个和一行一个布局。
-
-1.2 更新
-
-- 新增侧边栏，支持移动端弹出。
-- 去除白色主题。
-- 优化动效，减少卡顿。
-
-1.0 初版
-
-- 支持白天/黑夜模式切换。
-- 提供三套主题。
-- 支持前台一键切换。
-
-💻 使用
-
-- 下载并解压。
-- 主要文件：
-- /static/root.css：主题样式文件。
-- /static/style.css：样式文件，可修改字体。
-- /static/img/favicon.ico：网页图标和头像。
-- /static/script.js：JS 功能文件。
-
-🧠 技术栈
-
-- HTML
-- CSS
-- JavaScript
-
-🙏 鸣谢
-- **iconfont** 图标库。
-
-📌 备注
-
-- 页面图标均为SVG，可自行替换。
-- - 替换 SVG 时需去除宽高信息和fill 信息，才能正常使用。
-
-> skills 图标：[skill-icons](https://github.com/tandpfun/skill-icons) 这个开源项目
-
-
-
-- ## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=tsingfenger/homepage&type=Date)](https://star-history.com/#tsingfenger/homepage&Date)
+感谢原作者提供的优秀模板基础。
 
 
